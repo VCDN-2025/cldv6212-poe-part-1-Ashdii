@@ -1,9 +1,17 @@
-# Visual Studio 
-.vs/ 
-*.user 
-*.suo 
-bin/ 
-obj/ 
-*.log 
-*.DS_Store 
-"appsettings.json" 
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build outputs
+bin/
+obj/
+
+# Logs
+*.log
+
+# OS-specific
+*.DS_Store
+
+# Secrets
+appsettings.json
