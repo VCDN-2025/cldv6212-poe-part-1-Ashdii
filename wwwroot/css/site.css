@@ -1,0 +1,75 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    background: #258cfb !important;
+}
+
+    .navbar .nav-link {
+        color: white !important;
+        font-weight: 500;
+    }
+
+        .navbar .nav-link:hover {
+            color: #dfefff !important;
+        }
+
+.btn-primary {
+    background-color: #258cfb;
+    border-color: #258cfb;
+}
+
+    .btn-primary:hover {
+        background-color: #1e6ecb;
+        border-color: #1e6ecb;
+    }
+
+.card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background: #258cfb;
+    color: white;
+    font-weight: 600;
+}
+
+.table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+    .table thead {
+        background: #258cfb;
+        color: white;
+    }
+
+.form-control, .form-select {
+    border-radius: 8px;
+}
+
+.form-floating > .form-control::placeholder {
+    color: #aaa;
+    text-align: end;
+}
+
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}

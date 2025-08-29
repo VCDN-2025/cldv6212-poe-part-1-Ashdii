@@ -1,0 +1,38 @@
+﻿@model ABCRetailWebApp.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<h1>AddProduct</h1>
+
+<h4>Product</h4>
+
+<form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" required />
+    </div>
+
+    <div>
+        <label>Description</label>
+        <textarea name="Description"></textarea>
+    </div>
+
+    <div>
+        <label>Price</label>
+        <input type="number" name="Price" step="0.01" required />
+    </div>
+
+    <div>
+        <label>Stock Quantity</label>
+        <input type="number" name="StockQuantity" required />
+    </div>
+
+    <div>
+        <label>Image</label>
+        <input type="file" name="file" accept="image/*" required />
+    </div>
+
+    <button type="submit">Add Product</button>
+</form>

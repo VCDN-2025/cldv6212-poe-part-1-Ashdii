@@ -1,0 +1,51 @@
+﻿@model ABCRetailWebApp.Models.Order
+
+@{
+    var customers = ViewData["Customer"] as List<ABCRetailWebApp.Models.Customer> ?? new List<ABCRetailWebApp.Models.Customer>();
+    var products = ViewData["Product"] as List<ABCRetailWebApp.Models.Product> ?? new List<ABCRetailWebApp.Models.Product>();
+}
+
+<h1>Create Order</h1>
+
+@if (!customers.Any() || !products.Any())
+{
+    <div class="alert alert-warning">
+        No customers or products available. Please add customers and products first.
+    </div>
+}
+else
+{
+    <form asp-action="AddOrder" method="post">
+        <div class="form-group mb-3">
+            <label asp-for="Customer_Id">Customer</label>
+            <select asp-for="Customer_Id" class="form-control"
+                    asp-items="@(new SelectList(customers, "RowKey", "FirstName"))">
+                <option value="">-- Select Customer --</option>
+            </select>
+            <span asp-validation-for="Customer_Id" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Product_Id">Product</label>
+            <select asp-for="Product_Id" class="form-control"
+                    asp-items="@(new SelectList(products, "RowKey", "Name"))">
+                <option value="">-- Select Product --</option>
+            </select>
+            <span asp-validation-for="Product_Id" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Order_Date">Order Date</label>
+            <input asp-for="Order_Date" class="form-control" type="date" />
+            <span asp-validation-for="Order_Date" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="TotalAmount">Total Amount</label>
+            <input asp-for="TotalAmount" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="TotalAmount" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Order</button>
+    </form>
+}

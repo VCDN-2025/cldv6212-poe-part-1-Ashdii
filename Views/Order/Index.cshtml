@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ABCRetailWebApp.Models.Order>
+
+@{
+    var customers = ViewData["Customers"] as List<ABCRetailWebApp.Models.Customer> ?? new List<ABCRetailWebApp.Models.Customer>();
+    var products = ViewData["Products"] as List<ABCRetailWebApp.Models.Product> ?? new List<ABCRetailWebApp.Models.Product>();
+}
+
+<h1>Orders</h1>
+
+<p>
+    <a asp-action="AddOrder" class="btn btn-success">Create New Order</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            var customer = customers.FirstOrDefault(c => c.RowKey == order.Customer_Id);
+            var product = products.FirstOrDefault(p => p.RowKey == order.Product_Id);
+
+            <tr>
+                <td>@order.Order_Id</td>
+                <td>@(customer != null ? customer.FirstName + " " + customer.LastName : order.Customer_Id)</td>
+                <td>@(product != null ? product.Name : order.Product_Id)</td>
+                <td>@order.Order_Date.ToShortDateString()</td>
+                <td>@order.TotalAmount</td>
+            </tr>
+        }
+    </tbody>
+</table>
